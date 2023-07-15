@@ -1,4 +1,5 @@
 import pygame
+import os
 from pygame.sprite import Sprite
 
 class Ship(Sprite):
@@ -7,7 +8,9 @@ class Ship(Sprite):
         super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
-        self.image = pygame.image.load('/home/keyserz/Documents/Aliens Invasion/ship_inv.bmp')
+        base_path = os.path.dirname(os.path.realpath(__file__))
+        image_path = os.path.join(base_path, 'ship_inv.bmp')
+        self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (80, 90))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
