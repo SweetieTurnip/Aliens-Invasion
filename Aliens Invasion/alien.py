@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import AbstractGroup, Sprite
+import os
 
 class Alien(Sprite):
     def __init__(self, settings, screen):
@@ -8,7 +9,9 @@ class Alien(Sprite):
         self.screen = screen
         self.settings = settings
 
-        self.image = pygame.image.load('/home/keyserz/Documents/Aliens Invasion/alien_ship.bmp')
+        base_path = os.path.dirname(os.path.realpath(__file__))
+        image_path = os.path.join(base_path, 'alien_ship.bmp')
+        self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect()
 
